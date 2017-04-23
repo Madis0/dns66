@@ -216,11 +216,11 @@ public class MainActivity extends AppCompatActivity {
                 logcat.append('\n');
             }
 
-            Intent eMailIntent = new Intent(Intent.ACTION_SENDTO);
+            Intent eMailIntent = new Intent(Intent.ACTION_SEND);
             eMailIntent.setType("text/plain");
+            eMailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {"jak@jak-linux.org"});
             eMailIntent.putExtra(Intent.EXTRA_SUBJECT, "DNS66 Logcat");
             eMailIntent.putExtra(Intent.EXTRA_TEXT, logcat.toString());
-            eMailIntent.setData(Uri.parse("mailto:jak@jak-linux.org"));
             eMailIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(eMailIntent);
         } catch (IOException e) {
